@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import { useDeals } from '../hooks/useDeals'
 import { useStats } from '../hooks/useStats'
@@ -9,7 +8,7 @@ import RevenueChart from '../components/dashboard/RevenueChart'
 import DealsTable from '../components/dashboard/DealsTable'
 
 const Dashboard = () => {
-    const { user, signOut } = useAuth()
+    const { user } = useAuth()
     const { deals, createDeal, updateDeal, deleteDeal, loading } = useDeals()
     const stats = useStats()
     const [activeSection, setActiveSection] = useState('home')
