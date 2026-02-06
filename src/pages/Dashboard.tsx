@@ -47,10 +47,10 @@ const Dashboard = () => {
             />
 
             {/* Main Content */}
-            <div className="flex-1 w-full max-w-[100vw] md:ml-20 transition-[margin] duration-300 overflow-x-hidden">
+            <div className="flex-1 w-full max-w-[100vw] md:ml-20 transition-[margin] duration-300 overflow-x-hidden flex flex-col">
                 {/* Header */}
                 <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
-                    <div className="px-4 md:px-8 py-4 flex items-center justify-between gap-4">
+                    <div className="px-6 md:px-8 py-4 flex items-center justify-between gap-4">
                         {/* Mobile Menu Button */}
                         <button
                             className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-lg"
@@ -62,7 +62,7 @@ const Dashboard = () => {
                         </button>
 
                         {/* Search */}
-                        <div className="flex-1 max-w-md">
+                        <div className="flex-1 max-w-md mx-2">
                             <div className="relative">
                                 <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -78,7 +78,7 @@ const Dashboard = () => {
                         </div>
 
                         {/* User Profile */}
-                        <div className="flex items-center gap-2 md:gap-4">
+                        <div className="flex items-center gap-2 md:gap-4 shrink-0">
                             {/* Notifications */}
                             <button className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
                                 <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ const Dashboard = () => {
                 </header>
 
                 {/* Content */}
-                <main className="p-4 md:p-8">
+                <main className="flex-1 p-6 md:p-8 w-full max-w-7xl mx-auto">
                     {/* Stats Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         <StatsCard
