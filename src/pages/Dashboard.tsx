@@ -13,6 +13,7 @@ const Dashboard = () => {
     const stats = useStats()
     const [activeSection, setActiveSection] = useState('home')
     const [searchQuery, setSearchQuery] = useState('')
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
     // Datos para el gráfico de ingresos
     const revenueData = [
@@ -38,13 +39,28 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex">
             {/* Sidebar */}
-            <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
+            <Sidebar
+                activeSection={activeSection}
+                onSectionChange={setActiveSection}
+                isOpen={isSidebarOpen}
+                onClose={() => setIsSidebarOpen(false)}
+            />
 
             {/* Main Content */}
-            <div className="flex-1 ml-20">
+            <div className="flex-1 w-full md:ml-20 transition-[margin] duration-300">
                 {/* Header */}
-                <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
-                    <div className="px-8 py-4 flex items-center justify-between">
+                <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
+                    <div className="px-4 md:px-8 py-4 flex items-center justify-between gap-4">
+                        {/* Mobile Menu Button */}
+                        <button
+                            className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                            onClick={() => setIsSidebarOpen(true)}
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+
                         {/* Search */}
                         <div className="flex-1 max-w-md">
                             <div className="relative">
@@ -56,13 +72,13 @@ const Dashboard = () => {
                                     placeholder="Buscar..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                                    className="w-full pl-10 pr-4 py-2 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-sm md:text-base"
                                 />
                             </div>
                         </div>
 
                         {/* User Profile */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-2 md:gap-4">
                             {/* Notifications */}
                             <button className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
                                 <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,19 +88,19 @@ const Dashboard = () => {
                             </button>
 
                             {/* Profile */}
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 rounded-full flex items-center justify-center font-bold text-white">
+                            <div className="flex items-center gap-2 md:gap-3">
+                                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 rounded-full flex items-center justify-center font-bold text-white text-sm md:text-base">
                                     {user?.user_metadata?.full_name?.charAt(0) || user?.email?.charAt(0).toUpperCase()}
                                 </div>
-                                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-green-400 rounded-full"></div>
-                                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-teal-400 rounded-full"></div>
+                                <div className="hidden md:block w-10 h-10 bg-gradient-to-br from-blue-400 to-green-400 rounded-full"></div>
+                                <div className="hidden md:block w-10 h-10 bg-gradient-to-br from-green-400 to-teal-400 rounded-full"></div>
                             </div>
                         </div>
                     </div>
                 </header>
 
                 {/* Content */}
-                <main className="p-8">
+                <main className="p-4 md:p-8">
                     {/* Stats Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         <StatsCard
