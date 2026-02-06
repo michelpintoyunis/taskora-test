@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="bg-white/10 backdrop-blur-md rounded-full px-6 py-3 flex items-center justify-between border border-white/10">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Logo" className="h-8 w-8" />
+                        <img src="/logo.png" alt="Taskora Logo" className="h-8 w-8" />
                         <span className="text-xl font-bold font-inter-tight">Taskora</span>
                     </Link>
 
